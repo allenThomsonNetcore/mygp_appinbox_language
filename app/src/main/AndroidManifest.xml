@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:name=".MyApplicationClass"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Testcomposeapp"
+        tools:targetApi="31">
+
+        <meta-data
+            android:name="SMT_COMPOSE_APP"
+            android:value="true" />
+        <meta-data
+            android:name="SMT_APP_ID"
+            android:value="3e3e838020149ee53689841da279c341" />
+
+        <meta-data
+            android:name="HANSEL_APP_ID"
+            android:value="5WMK2OV9P4N20QFDD2ZM134HR" />
+
+        <meta-data
+            android:name="HANSEL_APP_KEY"
+            android:value="GKGP78UKZQOSVZUBU6EVWYP636EB1D84LFA4B7R24C1X88R46P" />
+
+        <activity android:name=".CartActivity"
+            android:exported="true"
+
+            >
+            <meta-data
+                android:name="SMT_COMPOSE_ACTIVITY"
+                android:value="true" />
+        </activity>
+
+
+        <activity android:name=".ProfileActivity"
+            android:exported="true">
+
+            <meta-data
+                android:name="SMT_COMPOSE_ACTIVITY"
+                android:value="true" />
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="allentest" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

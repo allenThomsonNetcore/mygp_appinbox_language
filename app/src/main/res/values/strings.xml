@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">testcomposeapp</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="invalid_credentials">Invalid credentials</string>
+    <string name="language_toggle">Switch to Bangla</string>
+    <string name="language_toggle_bn">Switch to English</string>
+    <string name="profile_item">Profile Item #%1$d</string>
+    <string name="home_item">Home Item #%1$d</string>
+    <string name="cart_item">Cart Item #%1$d</string>
+    <string name="quantity">Quantity: %1$d</string>
+    <string name="price">Price: $%1$.2f</string>
+</resources>
