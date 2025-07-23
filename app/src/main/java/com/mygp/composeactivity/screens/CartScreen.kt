@@ -55,6 +55,10 @@ fun CartScreen() {
 
         val count = smartechAppInbox.getAppInboxMessageCount(SMTAppInboxMessageType.INBOX_MESSAGE)
         Log.d("APPINBOX PRINTING LOGS","COUNT ${count}")
+
+
+        val messages = smartechAppInbox.getAppInboxMessages(SMTAppInboxMessageType.INBOX_MESSAGE)
+        Log.d("APPINBOX PRINTING LOGS","MESSAGES FORM LOCAL ${messages}")
     }
     val items = List(7) { stringResource(R.string.cart_item, it + 1) }
     Scaffold(
