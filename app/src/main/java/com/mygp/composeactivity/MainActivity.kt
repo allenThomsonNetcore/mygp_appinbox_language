@@ -17,6 +17,8 @@ import io.hansel.hanselsdk.Hansel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import android.content.res.Configuration
+import com.netcore.android.Smartech
+import java.lang.ref.WeakReference
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
@@ -24,6 +26,10 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val isSmartechHandledDeeplink = Smartech.getInstance(WeakReference(this)).isDeepLinkFromSmartech(intent)
+        if (!isSmartechHandledDeeplink) {
+        //Handle deeplink on app side
+        }
         userPreferences = UserPreferences(applicationContext)
 
         // Set locale from preferences before setContent

@@ -9,6 +9,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.mygp.composeactivity.screens.HomeScreen
 import com.mygp.composeactivity.ui.theme.MyGPStartActivityTheme
+import com.netcore.android.Smartech
+import java.lang.ref.WeakReference
 
 class HomeActivity : ComponentActivity() {
     private lateinit var profileLauncher: ActivityResultLauncher<Intent>

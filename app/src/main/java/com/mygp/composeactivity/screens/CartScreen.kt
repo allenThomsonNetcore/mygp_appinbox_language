@@ -2,6 +2,7 @@
 
 package com.mygp.composeactivity.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,6 +15,16 @@ import io.hansel.compose.SmtCompose
 import io.hansel.compose.smtTag
 import androidx.compose.ui.res.stringResource
 import com.mygp.composeactivity.R
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
+
+import com.netcore.android.smartechappinbox.SmartechAppInbox
+import com.netcore.android.smartechappinbox.network.listeners.SMTInboxCallback
+import com.netcore.android.smartechappinbox.network.model.SMTInboxMessageData
+import com.netcore.android.smartechappinbox.utility.SMTAppInboxMessageType
+import com.netcore.android.smartechappinbox.utility.SMTAppInboxRequestBuilder
+import com.netcore.android.smartechappinbox.utility.SMTInboxDataType
+import java.lang.ref.WeakReference
 
 @OptIn(ExperimentalMaterial3Api::class)
 
@@ -21,6 +32,30 @@ import com.mygp.composeactivity.R
 @Composable
 fun CartScreen() {
     SmtCompose.screenName = "cart_screen"
+    val context = LocalContext.current
+    LaunchedEffect(Unit) {
+        val builder = SMTAppInboxRequestBuilder.Builder(SMTInboxDataType.ALL)
+            .setCallback(object : SMTInboxCallback {
+                override fun onInboxFail() {
+                    Log.d("APPINBOX PRINTING LOGS","FAIL CALLBACK ")
+
+                }
+                override fun onInboxProgress() {
+                    Log.d("APPINBOX PRINTING LOGS","IN PROGRESS CALLBACK ")
+                }
+                override fun onInboxSuccess(messages: MutableList<SMTInboxMessageData>?) {
+
+                    Log.d("APPINBOX PRINTING LOGS","MESSAGES ${messages} ")
+
+                }
+            })
+            .setLimit(10).build()
+        val smartechAppInbox = SmartechAppInbox.getInstance(WeakReference(context.applicationContext))
+        smartechAppInbox.getAppInboxMessages(builder)
+
+        val count = smartechAppInbox.getAppInboxMessageCount(SMTAppInboxMessageType.INBOX_MESSAGE)
+        Log.d("APPINBOX PRINTING LOGS","COUNT ${count}")
+    }
     val items = List(7) { stringResource(R.string.cart_item, it + 1) }
     Scaffold(
         topBar = { TopAppBar(title = { Text(stringResource(R.string.cart)) }) }

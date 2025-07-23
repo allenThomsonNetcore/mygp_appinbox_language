@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -45,10 +46,14 @@ android {
 }
 
 dependencies {
+    implementation("com.netcore.android:smartech-push:3.5.6")
+    implementation("com.netcore.android:smartech-sdk:3.6.2")
     implementation(libs.smartech.sdk)
     implementation ("com.netcore.android:smartech-nudges-compose:10.5.4")
-
+    implementation(platform("com.google.firebase:firebase-bom:34.0.0"))
     implementation(libs.androidx.compose.ui)
+    implementation ("com.netcore.android:smartech-appinbox:3.5.2")
+    implementation("com.google.firebase:firebase-messaging:24.1.2")
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.runtime)
 
@@ -64,6 +69,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.material3.android)
+   // implementation(libs.firebase.messaging.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
